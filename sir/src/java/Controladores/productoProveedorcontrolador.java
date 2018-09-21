@@ -5,9 +5,14 @@
  */
 package Controladores;
 
+import Entidades.ProductoProveedor;
+import Facade.ProductoProveedorFacade;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 
 /**
  *
@@ -17,10 +22,29 @@ import java.io.Serializable;
 @SessionScoped
 public class productoProveedorcontrolador implements Serializable {
 
-    /**
-     * Creates a new instance of productoProveedorcontrolador
-     */
+    @EJB
+    ProductoProveedorFacade productoProveedorFacade;        
+    private ProductoProveedor productoProveedor;
+    private List<ProductoProveedor> lista;
     public productoProveedorcontrolador() {
+     lista = new ArrayList<>();
+     productoProveedor = new ProductoProveedor();
+    }
+
+    public ProductoProveedor getProductoProveedor() {
+        return productoProveedor;
+    }
+
+    public void setProductoProveedor(ProductoProveedor productoProveedor) {
+        this.productoProveedor = productoProveedor;
+    }
+
+    public List<ProductoProveedor> getLista() {
+        return lista;
+    }
+
+    public void setLista(List<ProductoProveedor> lista) {
+        this.lista = lista;
     }
     
 }
