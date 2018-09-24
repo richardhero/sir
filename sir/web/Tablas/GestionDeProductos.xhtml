@@ -15,81 +15,74 @@
            <p:dataTable id="tbl" var="Producto" value="#{productoControlador.listarProducto()}"
                  paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} "
                  paginator="true" rows="10" style="margin-bottom:20px">
-              <f:facet name="header">
-            <p:outputPanel>
-                <h:outputText value="Search all fields:" />
-                <p:inputText id="globalFilter" onkeyup="PF('Producto').filter()" style="width:150px" placeholder="Producto a Buscar"/>
-            </p:outputPanel>
-              </f:facet>
+              
         <f:facet name="{seguir}">
-            <a href="resources/img/excel.png.xhtml"></a>
-            <h:commandLink>
-                <p:graphicImage   name="resources/img/xml.png" width="24"/>
-                 <img src="resources/img/xml.png" alt=""/>
-                <p:dataExporter type="xls" target="tbl" fileName="Producto" />
+                <h:commandLink>
+                <p:graphicImage   name="../resources/img/sobresalir.png" width="24"/>
+                 <p:dataExporter type="xls" target="tbl" fileName="producto" />
             </h:commandLink>
  
             <h:commandLink>
                 <p:graphicImage name="/demo/images/pdf.png" width="24"/>
-                <p:dataExporter type="pdf" target="tbl" fileName="Productp"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="producto"/>
             </h:commandLink>
            
             <h:commandLink>
                 <p:graphicImage name="/demo/images/csv.png" width="24"/>
-                <p:dataExporter type="csv" target="tbl" fileName="Producto" />
+                <p:dataExporter type="csv" target="tbl" fileName="producto" />
             </h:commandLink>
  
             <h:commandLink>
                 <p:graphicImage name="/demo/images/xml.png" width="24"/>                
-                <p:dataExporter type="xml" target="tbl" fileName="Producto" /> 
+                <p:dataExporter type="xml" target="tbl" fileName="producto" /> 
             </h:commandLink>
         </f:facet>
  
-        <p:column>
+               <p:column filterBy="#{Producto.nombreProducto}">
             <f:facet name="header">
                 <h:outputText value="NombreProducto" />
             </f:facet>
             <h:outputText value="#{Producto.nombreProducto}" />
         </p:column>
  
-        <p:column>
+               <p:column filterBy="#{Producto.cantidadProducto}">
             <f:facet name="header">
                 <h:outputText value="CantidadProducto"/>
             </f:facet>
             <h:outputText value="#{Producto.cantidadProducto}" />
         </p:column>
  
-        <p:column>
+               <p:column filterBy="#{Producto.idReceta.cantidadxreceta}">
             <f:facet name="header">
                 <h:outputText value="SalidaProducto" />
             </f:facet>
             <h:outputText value="#{Producto.idReceta.cantidadxreceta}" />
         </p:column>
  
-        <p:column>
+               <p:column filterBy="#{Producto.idDesperdicio.cantidad}">
             <f:facet name="header">
                 <h:outputText value="CantidadDesperdicio" />
             </f:facet>
-            <h:outputText value="#{Producto.idDesperdicios.cantidad}" />
+            <h:outputText value="#{Producto.idDesperdicio.cantidad}" />
         </p:column>
-               <p:column>
+               <p:column filterBy="#{Producto.idBodega.conteo}">
             <f:facet name="header">
                 <h:outputText value="Conteo" />
             </f:facet>
                    <h:outputText value="#{Producto.idBodega.conteo}" />
         </p:column>
                 
-               <p:column>
+               <p:column filterBy="#{Producto.idBodega.cantidadTotal}">
             <f:facet name="header">
                 <h:outputText value="ConteoTotal" />
             </f:facet>
-                   <h:outputText value="#{Producto.idBodega.catidadTotal}" />
+                   <h:outputText value="#{Producto.idBodega.cantidadTotal}" />
         </p:column>
     </p:dataTable>
  
     <h3>Exportar en</h3>
     <h:commandLink>
-        <p:graphicImage name="/demo/images/excel.png" />
+        <p:graphicImage   name="resources/img/sobresalir.png" width="100"/>
         <p:dataExporter type="xls" target="tbl" fileName="Producto" pageOnly="true"/>
     </h:commandLink>
  
@@ -112,4 +105,5 @@
    </ui:composition>         
     </h:body>
 </html>
+
 
