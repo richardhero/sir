@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Menus/MenuGesProduc.xhtml" >
+            <ui:define name="content">
+        <f:view>
+          
+             <h:form>
+                <h1><h:outputText value="Registrar Producto"/></h1>
+                <p:panelGrid columns="2">
+             
+                    <p:outputLabel  value="Nombre" for="nombreProducto" />
+                    <p:inputText placeholder="Nombre del Producto" id="nombreProducto" value="#{productoControlador.producto.nombreProducto}" title="NombreProducto" />
+                    <p:outputLabel value="Estado:" for="estado" />
+                    <p:inputText placeholder="Activo/InActivo"  id="estado" value="#{productoControlador.producto.estado}" title="Estado" />
+                    <p:outputLabel value="CantidadProducto:" for="cantidadProducto" />
+                    <p:inputText  placeholder="catidad #" id="cantidadProducto" value="#{productoControlador.producto.cantidadProducto}" title="CantidadProducto" />
+                    
+                </p:panelGrid>
+                <h:commandButton value="registrar" action ="#{productoControlador.agregarProducto()}"></h:commandButton>
+            </h:form>
+        </f:view>
+         </ui:define>       
+       </ui:composition>
+    </h:body>
+</html>
+

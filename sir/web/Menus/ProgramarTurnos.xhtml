@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>    
+    <h:body>
+        <ui:composition template="../Menus/MenuPersonal.xhtml">
+            <ui:define name="content" >
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Programar Turno"/></h1>
+                        <p:growl id="msgs" showDetail="true" />
+                        <p:panel header="Registro de Turnos">
+                            <div calss="form-group row">
+                                <p:outputLabel class="col-12 col-md-3" value="Nombre:" for="nombre" />
+                                <h:selectOneMenu class="col-12 col-md-6" id="nombre" value="#{turnoControlador.persona.numeroDocumento}">
+                                    <f:selectItems value="#{personaControlador.listaempleados()}" var="Persona" itemValue="#{Persona.numeroDocumento}" itemLabel="#{Persona.nombre} #{Persona.apellido}"/>
+                                </h:selectOneMenu> 
+                            </div>                            
+                            <div calss="form-group row">
+                                <p:outputLabel class="col-12 col-md-3" value="Entrada Programada:" for="EntradaProgramada"/>
+                                <p:calendar id="EntradaProgramada" value="#{turnoControlador.turno.entradaProgramada}" pattern="MM/dd/yyyy HH:mm" required="true"/>
+                            </div>
+                            <div calss="form-group row">
+                                <p:outputLabel class="col-12 col-md-3"  value="Salida Programada:" for="salidaProgramada"/>
+                                <p:calendar id="salidaProgramada" value="#{turnoControlador.turno.salidaProgramada}" pattern="MM/dd/yyyy HH:mm" required="true"/>
+                            </div>
+                        </p:panel>
+                        <h:commandButton value="Registrar Nuevo Turno " actionListener="#{turnoControlador.programarTurnos()}" ></h:commandButton>
+                    </h:form>
+                </f:view>
+            </ui:define>            
+        </ui:composition>
+    </h:body>
+</html>
+

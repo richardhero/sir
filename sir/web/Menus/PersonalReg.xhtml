@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Menus/MenuPersonal.xhtml">
+            <ui:define name="content" >
+                <f:view>
+                <h:form>
+                <h1><h:outputText value="Empleados Registrados"/></h1>
+                <p:dataTable value="#{personaControlador.listaempleados()}" var="item" reflow="true" rows="5" paginator="true">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="NumeroDocumento"/>
+                        </f:facet>
+                        <h:outputText value="#{item.numeroDocumento}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TipoDocumento"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipoDocumento}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{item.nombre}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Apellido"/>
+                        </f:facet>
+                        <h:outputText value="#{item.apellido}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Correo"/>
+                        </f:facet>
+                        <h:outputText value="#{item.correo}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Telefono"/>
+                        </f:facet>
+                        <h:outputText value="#{item.telefono}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="TipoPersona"/>
+                        </f:facet>
+                        <h:outputText value="#{item.tipoPersona}"/>
+                    </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="IdSucursales"/>
+                        </f:facet>
+                        <h:outputText value="#{item.idSucursales.idSucursales}"/>
+                    </p:column>
+                </p:dataTable>
+            </h:form>
+        </f:view>
+            </ui:define>            
+        </ui:composition>
+    </h:body>
+</html>
+

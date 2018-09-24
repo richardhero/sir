@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Administrador/TemplateMenuAdmin.xhtml">
+            <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="FidLisClientes.html"><i class="icofont icofont-cur-dollar-minus"></i>
+					<span class="hidden-sm-down ">Lista de clientes</span>
+                                    </a>
+                                    <a class="" href="FidLisResevas.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down ">Ver Reservas</span>
+                                    </a>
+                                    <a class="" href="FidGProm.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down ">Gestion de Promociones</span>
+                                    </a>
+                                    <a class="" href="FidLisPqrs.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down">Ver PQRS</span>
+                                    </a>
+				</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                           <p:outputLabel value="Estado:" for="estado" />
+                            <p:inputText id="estado" value="#{promocionControlador.promocion.estado}" title="Estado" />
+                            <p:outputLabel value="NombrePromocion:" for="nombrePromocion" />
+                            <p:inputText id="nombrePromocion" value="#{promocionControlador.promocion.nombrePromocion}" title="NombrePromocion" required="true" requiredMessage="The NombrePromocion field is required."/>
+                            <p:outputLabel value="DescripcionPromocion:" for="descripcionPromocion" />
+                            <p:inputText id="descripcionPromocion" value="#{promocionControlador.promocion.descripcionPromocion}" title="DescripcionPromocion" required="true" requiredMessage="The DescripcionPromocion field is required."/>
+                            <p:outputLabel value="PrecioPromocion:" for="precioPromocion" />
+                            <p:inputText id="precioPromocion" value="#{promocionControlador.promocion.precioPromocion}" title="PrecioPromocion" required="true" requiredMessage="The PrecioPromocion field is required."/>
+                            <p:outputLabel value="Tipo:" for="tipo" />
+                            <p:inputText id="tipo" value="#{promocionControlador.promocion.tipo}" title="Tipo" />
+                            <p:outputLabel value="IdCliente:" for="idCliente" />
+                            <p:selectOneMenu id="idCliente" value="#{promocionControlador.cliente.idCliente}" required="true" requiredMessage="The IdCliente field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{clienteControlador.listarCliente()}" var="cliente" itemLabel="#{cliente.tipoCliente}" itemValue="#{cliente.idCliente}"/>
+                            </p:selectOneMenu>
+                            <p:outputLabel value="IdPlato:" for="idPlato" />
+                            <p:selectOneMenu id="idPlato" value="#{promocionControlador.plato.idPlato}" required="true" requiredMessage="The IdPlato field is required.">
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{platoControlador.listarPlato()}" var="plato" itemLabel="#{plato.nombrePlato}" itemValue="#{plato.idPlato}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                    </h:form>
+                </f:view>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+<ui:composition template="../Administrador/TemplateMenuAdmin.xhtml">
+
+    <ui:define name="left">
+       	<div class="container-fluid  ">
+		<div class="row justify-content-between">
+			<div class="barra col-12">
+				<nav class="menu">
+
+					<div class="texto" >
+						<a class="" href="AdministradorGP.html"><i class="icofont icofont-apple"></i>
+							<span class="hidden-sm-down ">Controlar Existencia</span>
+						</a>
+						<a class="" href="AdministradorRp.html"><i class="icofont icofont-listing-box"></i>
+							<span class="hidden-sm-down">Registar Producto</span>
+						</a>
+						<a href="AdministradorVerEyS.html"><i class="icofont icofont-sign-in"></i>
+							<span class="hidden-sm-down">Verificar Entrada y Salida</span>
+						</a>
+						<a href="AdministradorCD.html"><i class="icofont icofont-settings"></i>
+							<span class="hidden-sm-down">Controlar Desperdicios</span>
+						</a>
+						<a href="AdministradorInT.html"><i class="icofont icofont-info-square"></i>
+							<span class="hidden-sm-down">Informes Totales</span>
+						</a>
+					</div>
+				</nav>
+			</div>
+		</div>
+	</div>
+    </ui:define>
+
+</ui:composition>
+        </h:body>
+</html>

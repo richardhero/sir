@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Cliente/TemplateMenuCliente2.xhtml">
+            <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="#{request.contextPath}/faces/Menus/MenuCrearPqr.xhtml"><i class="icofont icofont-cur-dollar-minus"></i>
+					<span class="hidden-sm-down ">Generar PQR</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Tablas/GestionPqrCliente.xhtml"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down ">Consulta de PQR</span>
+                                    </a>
+                                    <a class="" href="FidGProm.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down ">Historico PQR</span>
+                                    </a>
+                                    <a class="" href="FidLisPqrs.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down">Estadistica Promociones</span>
+                                    </a>
+				</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content" >
+                <p:panel header="Bienvenido al Sistema Integral de PQR" >
+                    
+                <div class="container-fluid justify-content-between">
+                    <div class="row justify-content-between col-8 m-4" style="text-align:justify;  ">
+                    
+                
+                <p>Para la correcta prestación de nuestros servicios ARCHIE´S informa que sus datos personales 
+                    serán manejados conforme a las políticas de tratamiento de la información y privacidad.  
+                    El tratamiento que realiza ARCHIE´S sobre los datos personales consiste en recolectar, almacenar, 
+                    depurar, usar, analizar, circular, suprimir, actualizar, y cruzar información propia o de terceros 
+                    autorizados, así como obtener información sobre preferencias de consumo y comportamientos 
+                    en los canales de contacto. Las finalidades específicas  del tratamiento de información son:</p>
+                    
+                <p>1. Facilitar el acceso a los servicios ofrecidos por GASTRONOMÍA ITALIANA EN COLOMBIA S.A.S, 
+                    específicamente en el caso del registro virtual para la prestación del servicio de domicilio 
+                    solicitado por el cliente vía internet, y el contacto con ARCHIES por dicho medio, entre otras 
+                    actividades comerciales;</p>
+                    
+                <p>2. Realizar estudios estadísticos que permitan diseñar mejoras en los servicios prestados.</p>
+                
+                <p>3. Gestionar tareas básicas de administración.</p>
+                <p>4. Informar por cualquiera de los medios proporcionados al momento del suministro de la información, 
+                las promociones, novedades, productos y servicios actuales y futuros relacionados con eventos, 
+                concursos, actividades, entrega de premios, beneficios y productos adquiridos. </p>
+                <p>5.  Responder a solicitudes específicas de nuestros clientes.</p>
+                </div>
+                </div>
+                </p:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Administrador/TemplateMenuAdmin.xhtml">
+            <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="FidLisClientes.html"><i class="icofont icofont-cur-dollar-minus"></i>
+					<span class="hidden-sm-down ">Lista de Promociones</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Menus/MenuCrearPromocion.xhtml"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down ">Nueva Promoción</span>
+                                    </a>
+                                    <a class="" href="FidGProm.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down ">Promociones inactivas</span>
+                                    </a>
+                                    <a class="" href="FidLisPqrs.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down">Estadistica Promociones</span>
+                                    </a>
+				</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="IdPromocion:" for="idPromocion" />
+                            <p:inputText id="idPromocion" value="#{promocionControlador.promocion.idPromocion}" title="IdPromocion" required="true" requiredMessage="The IdPromocion field is required."/>
+                            <p:outputLabel value="Estado:" for="estado" />
+                            <p:inputText id="estado" value="#{promocionControlador.promocion.estado}" title="Estado" />
+                            <p:outputLabel value="NombrePromocion:" for="nombrePromocion" />
+                            <p:inputText id="nombrePromocion" value="#{promocionControlador.promocion.nombrePromocion}" title="NombrePromocion" />
+                            <p:outputLabel value="DescripcionPromcion:" for="descripcionPromcion" />
+                            <p:inputText id="descripcionPromcion" value="#{promocionControlador.promocion.descripcionPromcion}" title="DescripcionPromcion" />
+                            <p:outputLabel value="PrecioPromocion:" for="precioPromocion" />
+                            <p:inputText id="precioPromocion" value="#{promocionControlador.promocion.precioPromocion}" title="PrecioPromocion" />
+                            <p:outputLabel value="Tipo:" for="tipo" />
+                            <p:inputText id="tipo" value="#{promocionControlador.promocion.tipo}" title="Tipo" />
+                            <p:outputLabel value="IdFidelizacion:" for="idFidelizacion" />
+                            <p:selectOneMenu id="idFidelizacion" value="#{promocionControlador.fidelizacion.idFidelizacion}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{fidelizacionControlador.listarFidelizacion()}" var="fidelizacion" itemValue="#{fidelizacion.idFidelizacion}" itemLabel="#{fidelizacion.puntos}"/>
+                            </p:selectOneMenu>
+                        </p:panelGrid>
+                        <p:commandButton value="Modificar" action="#{promocionControlador.editarPromocion2()}"></p:commandButton>
+                    </h:form>
+                </f:view>
+
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

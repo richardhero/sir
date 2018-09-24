@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Cliente/TemplateMenuCliente2.xhtml">
+             <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="FidLisClientes.html"><i class="icofont icofont-cur-dollar-minus"></i>
+					<span class="hidden-sm-down ">Lista de clientes</span>
+                                    </a>
+                                    <a class="" href="FidLisResevas.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down ">Ver Reservas</span>
+                                    </a>
+                                    <a class="" href="FidGProm.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down ">Gestion de Promociones</span>
+                                    </a>
+                                    <a class="" href="FidLisPqrs.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down">Ver PQRS</span>
+                                    </a>
+				</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <f:view>
+
+
+                    <h:form>
+                        <h1><h:outputText value="Create/Edit"/></h1>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="FechaReserva:" for="fechaReserva" />
+                            <p:calendar id="fechaReserva" value="#{reservaControlador.reserva.fechaReserva}" title="FechaReserva" pattern="MM/dd/yyyy HH:mm:ss"  ></p:calendar>
+                            <p:outputLabel value="CatidadPersonas:" for="catidadPersonas" />
+                            <p:inputText id="catidadPersonas" value="#{reservaControlador.reserva.catidadPersonas}" title="CatidadPersonas" />
+                            <p:outputLabel value="NoMesa:" for="noMesa" />
+                            <p:inputText id="noMesa" value="#{reservaControlador.reserva.noMesa}" title="NoMesa" />
+                            
+                            <p:outputLabel value="IdSucursales:" for="idSucursales" />
+                            <p:selectOneMenu id="idSucursales" value="#{reservaControlador.sucursal.idSucursales}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{sucursalControlador.listarSucursal()}" var="sucursal" itemLabel="#{sucursal.nombre}" itemValue="#{sucursal.idSucursales}"/>
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="IdCliente:" for="idCliente" />
+                            <p:selectOneMenu id="idCliente" value="#{reservaControlador.cliente.idCliente}" >
+                                <!-- TODO: update below reference to list of available items-->
+                                <f:selectItems value="#{clienteControlador.listarCliente()}" var="cliente" itemLabel="#{cliente.tipoCliente}" itemValue="#{cliente.idCliente}"/>
+                            </p:selectOneMenu>
+                            
+                        </p:panelGrid>
+                        <p:commandButton value="Registrar" action="#{reservaControlador.registrarReserva()}"></p:commandButton>
+                    </h:form>
+                </f:view>
+
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Cliente/TemplateMenuCliente2.xhtml">
+           <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="#{request.contextPath}/faces/Menus/MenuCrearPqr.xhtml"><i class="icofont icofont-cur-dollar-minus"></i>
+                                        <span class="hidden-sm-down " >Generar PQR</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Tablas/GestionPqrCliente.xhtml"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down ">Consulta de PQR</span>
+                                    </a>
+                                    <a class="" href="FidGProm.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down ">Historico PQR</span>
+                                    </a>
+                                    <a class="" href="FidLisPqrs.html"><i class="icofont icofont-list"></i>
+					<span class="hidden-sm-down">Estadistica Promociones</span>
+                                    </a>
+				</div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content" >
+                <p:panel header="Bienvenido al Sistema Integral de PQR" >
+                    
+                <div class="container-fluid justify-content-between">
+                    <div class="row justify-content-between col-8 m-4" style="text-align:justify;  ">
+                <f:view >
+
+
+                    <h:form >
+                        <h3><h:outputText value="Formulario PQR"/></h3>
+                        <p:panelGrid columns="2">
+                            <p:outputLabel value="Tipo Pqr:" for="tipoPqr" />                       
+                            <p:selectOneMenu id="tipoPqr" value="#{pqrControlador.pqr.tipoPqr}" >
+                                <f:selectItems value="#{pqrControlador.listaEstadoPqr()}" ></f:selectItems>
+                            </p:selectOneMenu>
+                            
+                            <p:outputLabel value="Asunto:" for="asuntoPrq"  />
+                            <p:inputText id="asuntoPrq" value="#{pqrControlador.pqr.asuntoPrq}" title="AsuntoPrq" />
+                            <p:outputLabel value="DescripcionPqr:" for="descripcionPqr" />
+                            <p:inputTextarea id="descripcionPqr" rows="8" cols="60" value="#{pqrControlador.pqr.descripcionPqr}" title="DescripcionPqr"></p:inputTextarea>
+                            
+                           
+                        </p:panelGrid>
+                        <p:commandButton value="Registrar" action="#{pqrControlador.validacionPqr()}">
+                            
+                        </p:commandButton>
+                    </h:form>
+                </f:view>
+                   </div>
+                    </div>
+                    </p:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

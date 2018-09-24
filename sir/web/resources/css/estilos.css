@@ -1,0 +1,260 @@
+
+body{
+    /* color: white; */
+
+    font-family: 'Roboto Slab', serif;
+    text-align: center;
+    margin: 0;
+    background: black;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+}
+nav{
+    background-color:rgba(255,255,255,0);
+    overflow: hidden;
+}
+
+.ul{
+    float: right;
+}
+a.nav-link:hover{
+    border-bottom: 5px solid #4f4f4f;
+    padding-bottom: 0px;
+    transition-property: border-bottom;
+    transition-duration: 0.3s;
+}
+.container-fluid{
+
+    width: 100%;
+}
+.breadcrumb-image {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    padding: 0;
+    height: 100vh;
+    position: relative;
+    width:100%;
+}
+.breadcrumb-image::before {
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: rgba(0, 0, 0, 0.80) none repeat scroll 0 0;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.breadcrumb-image h1 {
+    color: #ffffff;
+    font-size: 33px;
+    font-weight: 600;
+    line-height: 40px;
+    position: relative;
+    text-transform: uppercase;
+}
+.breadcrumbs_path {
+    color: #fff;
+    margin-top: 8px;
+    position: relative;
+    z-index: 9;
+}
+.breadcrumbs_path > a {
+    color: #fff;
+    transition: all 0.3s ease 0s;
+}
+.fond{
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
+    background-size: 100% 100%;
+    height: 90vh;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    filter:  blur(6px) brightness(70%);
+
+}
+
+#carouselControl{
+    margin: 0px;
+    padding: 0px; 
+}
+.jumb1{
+
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    text-align: center;
+    margin: 0px;
+    width: 100%;
+}
+.lgo{
+    width: 50%;
+    height: 50%;
+}
+.gris{
+    background: white;
+}
+.jumb2{
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: black;
+    text-align: center;
+    margin: 0px;
+    padding: 0px;
+}
+#jumb3{
+    background-image: url(../img/fondo3.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    text-align: center;
+    margin: 0px;
+
+}
+.jumb4{
+    background-image: url(../img/fondo1.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    text-align: center;
+    margin: 0px;
+
+}
+.colo{
+    color: black;
+}
+.asd{
+    width: 100%;
+}
+.pr{
+    background: rgba(3,3,3,0.7);
+    text-align: center;
+    color: white;
+    padding-top: 62px;
+}
+.pr1{
+    background: rgba(3,3,3,0.7);
+    color:  white;
+    text-align: center;
+}
+.pr2{
+    background: rgba(190,190,190,0.3);
+    text-align: center;
+    color: black;
+
+}
+.img{
+    height: 550px;
+    width: 100%;
+    position: center;
+
+}
+.marg{
+    /* border: 1px solid #E6E6E6; */
+    text-align: center;
+
+}
+.tex{
+    text-align: center;
+}
+.modal{
+    color: black;
+}
+div#body{
+    margin:40px auto;
+    padding-top: 62px;
+    min-height:50px;
+
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+div.subapartado{
+
+    min-height:50px;
+    -webkit-transition: height 0.7s;
+}
+
+div.titulo{
+
+    height:50px;
+    background: rgba(3,3,3,0.7);
+    color: white;
+    overflow: hidden;
+
+}
+.fac{
+
+    padding: 15px 0;
+}
+.fac:hover{
+    background: white;
+    color: #2E64FE;
+}
+.tiw{
+    padding: 15px 0;
+}
+.tiw:hover{
+    background: white;
+    color: #58ACFA;
+}
+p.titulo{
+    margin:13px;
+
+}
+
+div.info{
+
+    height:0px;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    -webkit-transition: height 0.9s;
+}
+
+p.info{
+    margin:20px;
+    text-align: center;
+    color:#4f4f4f;
+}
+
+div.subapartado:hover div.info{
+
+    height:260px;
+
+}
+footer{
+    background: black;
+    height: 10vh;
+    width: 100%;
+}
+form input:focus:valid{
+    border-color: green;
+}
+
+form input:focus:invalid{
+    border-color: red;
+}
+form textarea:focus:valid{
+    border-color: green;
+}
+
+form textarea:focus:invalid{
+    border-color: red;
+}
+iframe{
+    width: 100%; height: 300px;
+}
+.b1{
+    width: 100%;
+}
+

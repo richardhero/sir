@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Administrador/TemplateMenuAdmin.xhtml">
+            <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between">
+                        <div class=" barra col-12">
+                            <nav class="menu">
+                                <div class="texto" >
+                                    <a class="" href="Control-personal.html"><i class="icofont icofont-cur-dollar-minus"></i>
+					<span class="hidden-sm-down ">Registro de Personal</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Menus/PersonalReg.xhtml"><i class="icofont icofont-ui-user-group"></i>
+                                        <span class="hidden-sm-down">Personal Registrado</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Menus/ProgramarTurnos.xhtml"><i class=" icofont icofont-address-book"></i>
+					<span class="hidden-sm-down ">Programar Turnos</span>
+                                    </a>
+                                    <a class="" href="#{request.contextPath}/faces/Menus/VerTurnos.xhtml"><i class=" icofont icofont-calendar"></i>
+					<span class="hidden-sm-down ">Ver Turnos</span>
+                                    </a>
+                                    <a class="" href="informesdeP.html"><i class="icofont icofont-info"></i>
+					<span class="hidden-sm-down">Informes de personal</span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#{request.contextPath}/faces/Administrador/TemplateInicioAdmin.xhtml">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="#{request.contextPath}/faces/Menus/MenuPersonal.xhtml">Control de personal</a></li>
+                    <li class="breadcrumb-item active">registrar personal</li>
+                </ol>
+                <f:view>
+                    
+                    
+                    <h:form id="form">
+                        <p:growl id="growl" showDetail="true" sticky="true" /> 
+                        <p:panel header="Registrar Personal" class="col-12 pane">
+                            <div class="form-group row">
+                                <p:outputLabel value="TipoDocumento:" class="col-12 col-md-4" for="tipoDocumento" />
+                                <h:selectOneMenu id="tipoDocumento" class="col-12 col-md-6" value="#{personaControlador.persona.tipoDocumento}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{personaControlador.listardoc()}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="NumeroDocumento:" class="col-12 col-md-4"  />
+                                <p:inputText id="numeroDocumento" class="col-12 col-md-6" value="#{personaControlador.persona.numeroDocumento}" title="NumeroDocumento" required="true" requiredMessage="The NumeroDocumento field is required."/>
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="Nombre:" class="col-12 col-md-4" for="nombre" />
+                                <p:inputText id="nombre" class="col-12 col-md-6" value="#{personaControlador.persona.nombre}" title="Nombre" />
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="Apellido:" class="col-12 col-md-4" for="apellido" />
+                                <p:inputText id="apellido" class="col-12 col-md-6" value="#{personaControlador.persona.apellido}" title="Apellido" />
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="Correo:" class="col-12 col-md-4" for="correo" />
+                                <p:inputText id="correo" class="col-12 col-md-6" value="#{personaControlador.persona.correo}" title="Correo" />
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="Telefono:" class="col-12 col-md-4" for="telefono" />
+                                <p:inputText id="telefono" class="col-12 col-md-6" value="#{personaControlador.persona.telefono}" title="Telefono" />
+                            </div>
+                            <div class="form-group row">
+                                <p:outputLabel value="TipoPersona:" class="col-12 col-md-4" for="tipoPersona"/>
+                                <h:selectOneMenu id="tipoPersona" class="col-12 col-md-6" value="#{personaControlador.persona.tipoPersona}">
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{personaControlador.rol()}"/>
+                                </h:selectOneMenu>
+                            </div>                          
+                            <div class="form-group row">
+                                <p:outputLabel value="IdSucursales:" class="col-12 col-md-4" for="idSucursales" />
+                                <h:selectOneMenu id="idSucursales" class="col-12 col-md-6" value="#{personaControlador.sucursal.idSucursales}" >
+                                    <!-- TODO: update below reference to list of available items-->
+                                    <f:selectItems value="#{sucursalControlador.listaSuc()}" var="suc" itemValue="#{suc.idSucursales}" itemLabel="#{suc.nombre}"/>
+                                </h:selectOneMenu>
+                            </div>
+                            <p:commandButton value="Registrar" class="btn" actionListener="#{personaControlador.registrarEmpleado()}" update="growl"/>
+                        </p:panel>
+                    </h:form>
+                </f:view>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

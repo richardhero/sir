@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="html" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Cajero/TemplateMenuCajero.xhtml">
+            <ui:define name="left">
+                <div class="container-fluid">
+                    <div class="row justify-content-between" >
+                        <div class=" barra col-12">
+                            <nav class="menu">
+
+                                <div class="texto">
+                                    <a class="" href="#{request.contextPath}/faces/Menus/MenuFacturacionCajero.xhtml"><i class="icofont icofont-cur-dollar-minus"></i>
+                                        <span class="hidden-sm-down ">Facturacion</span>
+                                    </a>
+                                    <a class="" href="Administrador-promociones.html"><i class="icofont icofont-sale-discount"></i>
+                                        <span class="hidden-sm-down">Consultar promociones</span>
+                                    </a>
+                                    <a class="" href="Administrador-promociones.html"><i class="icofont icofont-listing-box"></i>
+                                        <span class="hidden-sm-down">Mi seguimiento</span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+            </ui:define>
+            <ui:define name="content">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../inicioCajero.html.html">Inicio</a></li>
+                    <li class="breadcrumb-item"><a href="Administrador-facturacion.html">Ventas</a></li>
+                    <li class="breadcrumb-item active">Facturacion</li>
+                </ol>
+
+                <p:panel id="venta">
+                    <h3>Venta  </h3>
+                    <h:form id="caja">
+                        <p:commandButton  value="Abrir Operador" class="btn btn-secondary m-1" disabled="#{cajaControlador.enabled}" oncomplete="PF('sidebar1').show()"/>
+                        <p:commandButton  value="Cerrar Operador" class="btn btn-secondary m-1" disabled="#{!cajaControlador.enabled}" oncomplete="PF('sidebar2').show()" update="sidecierre"/>
+                    </h:form>
+                </p:panel>
+
+                <p:sidebar id="side" widgetVar="sidebar1" baseZIndex="10000">
+
+                    <f:view>
+                        <h:form onsubmit="setTimeout('document.forms[0].reset()', 2000)">
+                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+                            <p:panel header="Abrir Caja">
+                                <div class="form-group row">
+                                    <p:outputLabel class="col-12 col-md-6 align-self-start"  value="N. Documento:" for="numeroDocumento" />
+                                    <h:selectOneMenu id="numeroDocumento" class="col-12 col-md-6" disabled="true" value="#{usuarioControlador.us.numeroDocumento.numeroDocumento}" >
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{personaControlador.listar()}" var="per" itemValue="#{per.numeroDocumento}" itemLabel="#{per.numeroDocumento}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <p:outputLabel value="No Caja:" for="noCaja" />
+                                <p:inputText id="noCaja" value="#{cajaControlador.caja.noCaja}" title="NoCaja" />
+                                <p:outputLabel value="Base Inicial:" for="baseInicial" />
+                                <p:inputText id="baseInicial" value="#{cajaControlador.caja.baseInicial}" title="BaseInicial" />
+                            </p:panel>
+                            <p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
+                            <p:commandButton value="Iniciar"  actionListener="#{cajaControlador.iniciocaja(usuarioControlador.us.numeroDocumento.numeroDocumento)}" update="side formVenta formCliente caja"/>
+                        </h:form>
+                    </f:view>
+                </p:sidebar>
+                <p:sidebar id="sidecierre" widgetVar="sidebar2" position="right" baseZIndex="10000">
+                    <f:view>
+                        <h:form onsubmit="setTimeout('document.forms[0].reset()', 2000)">
+                            <p:growl id="growl" showDetail="true" sticky="true" autoUpdate="true"/>
+                            
+                            <p:panel header="Cerrar Caja">
+                                <div class="form-group row">
+                                    <p:outputLabel class="col-12 col-md-6 align-self-start"  value="N. Documento:" for="numeroDocumento" />
+                                    <h:selectOneMenu id="numeroDocumento" class="col-12 col-md-6" disabled="true" value="#{usuarioControlador.us.numeroDocumento.numeroDocumento}" >
+                                        <!-- TODO: update below reference to list of available items-->
+                                        <f:selectItems value="#{personaControlador.listar()}" var="per" itemValue="#{per.numeroDocumento}" itemLabel="#{per.numeroDocumento}"/>
+                                    </h:selectOneMenu>
+                                </div>
+                                <p:outputLabel value="Base Final:" for="baseFinal" />
+                                <p:inputText id="baseFinal" value="#{cajaControlador.caja.baseFinal}" title="BaseInicial" />
+                            </p:panel>
+                            <p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
+                            <p:commandButton value="Iniciar"  actionListener="#{cajaControlador.cerrarCaja(usuarioControlador.us.numeroDocumento.numeroDocumento)}" action="#{platoVentaControlador.reiniciarTotal()}" update="sidecierre formVenta formCliente caja"/>
+                            <p:panel id="totalv"> Total: #{platoVentaControlador.ventatotal}</p:panel>
+                        </h:form>
+                    </f:view>
+                </p:sidebar>
+                <h:form id="formCliente">
+                    <div class="row justify-content-center">
+                        <div class="col-12 col-md-4">
+                            <p:panel id="numfac"> Factura: #{ventaControlador.numFac1}</p:panel>
+                            <br/>	
+                            <p:outputLabel id="id" value="CC del cliente: #{clienteControlador.clienteIngresado.numeroDocumento.nombre} #{clienteControlador.clienteIngresado.numeroDocumento.apellido}"/>
+                            <br/>
+                            <p:outputLabel id="i" value="puntos del cliente: #{clienteControlador.clienteIngresado.puntos}"/>
+                            <div id="Mdepago">
+                                <label  for="">Metodo de pago</label>
+                                <select name="" disabled="#{!platoVentaControlador.enabled}" id="mesa">
+                                    <option value="Seleccione">Seleccione</option>
+                                    <option value="no_1">Puntos</option>
+                                    <option value="no_2">Efectivo</option>
+                                </select>	
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <p:inputText class="form-control" disabled="#{!cajaControlador.enabled}" value="#{clienteControlador.clienteIngresado.idCliente}" type="text" id="ced" required="true" placeholder="Ingresar Datos del Cliente"/>
+                            <p:commandButton value="Ingresar" disabled="#{!cajaControlador.enabled}" actionListener="#{clienteControlador.ingresarCliente(clienteControlador.clienteIngresado.idCliente)}" update="formCliente"/>
+                        </div>   
+                    </div>
+                </h:form>    
+                <h5> Productos</h5>
+                <h:form id="formVenta">
+                    <div class="row m-0 p-0">
+                        <p:panel id="panelPlatos" class="col-12 col-md-6" header="Productos">
+                            <p:dataTable id="productos" value="#{platoControlador.listar()}" var="item" reflow="true" rows="5" paginator="true">
+                                <f:facet name="header">
+                                    <p:outputPanel>
+                                        <h:outputText value="Cantidad:" />
+                                        <p:inputText id="cantidad" type="number" value="#{platoVentaControlador.cantidad}" disabled="#{!cajaControlador.enabled}" style="width:155px" placeholder="Cantidad a vender"/>
+                                    </p:outputPanel>
+                                </f:facet>
+                                <p:column filterBy="#{item.idPlato}">
+                                    <h:outputText value="#{item.idPlato}"/>
+                                </p:column>
+                                <p:column headerText="Nombre del Plato">
+                                    <h:outputText value="#{item.nombre}"/>
+                                </p:column>
+                                <p:column headerText="Precio del Plato">
+                                    <h:outputText value="#{item.precio}"/>
+                                </p:column>
+                                <p:column headerText="Accion">
+                                    <p:commandButton value="Agregar" actionListener="#{platoVentaControlador.lista(item)}" disabled="#{!cajaControlador.enabled}" update="formVenta:panelVenta"/>
+                                </p:column>
+                            </p:dataTable>    
+                        </p:panel>
+                        <p:panel id="panelVenta" class="col-12 col-md-6" header="Detalle Venta">
+                            <p:dataTable id="detalleVenta" value="#{platoVentaControlador.lis1}" editable="true" var="item1" reflow="true" rows="5" emptyMessage="No se han agregado productos">
+
+
+                                <p:ajax event="rowEdit" listener="#{platoVentaControlador.onRowEdit}" update="formVenta:detalleVenta formVenta:total" />
+                                <p:ajax event="rowEditCancel" listener="#{platoVentaControlador.onRowCancel}" update="formVenta:detalleVenta" />
+
+                                <p:column headerText="Nombre del Plato">
+                                    <h:outputText value="#{item1.nombre}"/>
+                                </p:column>
+                                <p:column headerText="Can." style="width: 45px;">
+                                    <p:cellEditor>
+                                        <f:facet name="output">
+                                            <h:outputText value="#{item1.cantidades}"/>
+                                        </f:facet>
+                                        <f:facet name="input">
+                                            <h:inputText value="#{item1.cantidades}"/>
+                                        </f:facet>
+                                    </p:cellEditor>
+                                </p:column>
+                                <p:column headerText="Precio del Plato">
+                                    $<h:outputText value="#{item1.precio}"/>
+                                </p:column>
+                                <p:column headerText="Total Venta">
+                                    $ <h:outputText value="#{item1.total}"/>
+                                </p:column>
+
+                                <p:column headerText="Acciones">
+                                    <p:commandButton value="Eliminar" actionListener="#{platoVentaControlador.eliminarProducto(item1)}" update="formVenta:panelVenta"/>
+                                </p:column>
+                                <p:column style="width:32px">
+                                    <p:rowEditor />
+                                </p:column>
+                            </p:dataTable>
+                            <p:panel id="total" header="Total Venta" style="width: 50%; margin: 0 auto;">
+                                <h4><p:outputLabel value="$#{platoVentaControlador.venta.total}"/></h4>
+                            </p:panel>
+                            <p:commandButton value="Registrar Venta" disabled="#{!cajaControlador.enabled}" actionListener="#{platoVentaControlador.registrarVenta(ventaControlador.numFac1,platoVentaControlador.venta.total,usuarioControlador.us.numeroDocumento.numeroDocumento)}" update="formVenta:detalleVenta formCliente:numfac formVenta:total sidecierre "/>
+                        </p:panel>
+                    </div>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </h:body>
+</html>
+

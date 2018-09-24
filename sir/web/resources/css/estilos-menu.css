@@ -1,0 +1,120 @@
+
+body{
+	/* color: white; */
+	padding-top: 56px;
+	font-family: 'Roboto Slab', serif;
+	
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	text-align: center;
+	margin: 0;
+	}
+nav{
+	position: fixed;
+	padding: 8px 0 8px 0;
+
+}
+.container-fluid{
+	margin: 0px;
+	padding: 0px;
+}
+
+.jumb1{
+		background-image: url(../img/fondo.jpg);
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	color: white;
+	text-align: center;
+	margin: 0px;
+	width: 100%;
+}
+.lgo{
+	width: 50%;
+	height: 50%;
+}
+
+.pr{
+	background: rgba(180,180,180,0.8);
+	text-align: center;
+	color: black;
+	margin:5px;
+
+}
+.pr1{
+	text-align: left;
+}
+.pr2{
+	background: rgba(190,190,190,0.3);
+	text-align: center;
+	color: black;
+	
+}
+.img{
+	height: 550px;
+	width: 100%;
+	position: center;
+	
+}
+.marg{
+	/* border: 1px solid #E6E6E6; */
+	text-align: center;
+	
+}
+.tex{
+	text-align: center;
+}
+.modal{
+	color: black;
+}
+footer{
+	background: black;
+	height: 10vh;
+	width: 100%;
+}
+form input:focus:valid{
+	border-color: green;
+}
+
+form input:focus:invalid{
+	border-color: red;
+}
+form textarea:focus:valid{
+	border-color: green;
+}
+
+form textarea:focus:invalid{
+	border-color: red;
+}
+
+.acordion input{
+	display: none;
+}
+.acordeon_titulo{
+	display: block;
+	padding: 15px;
+	background: rgba(200, 200, 200, 1);	
+	font-size: 20px;
+	margin: 0;
+	border-bottom:  0.5px solid black;
+	cursor: pointer;
+}
+.acordeon_titulo:hover{
+	background: rgba(200, 200, 200, 0.5);	
+}
+.fon{
+			background-image: url(../img/fondo1.jpg);
+				background-size: 100% 100%;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	height: 0;
+	overflow: hidden;
+	margin: 0;
+	-webkit-transition: height 0.7s;
+}
+.acordion input:checked ~ .fon{
+	height: auto;
+	padding: 15px;
+	-webkit-transition: height 0.7s;
+}

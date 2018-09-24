@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Menus/MenuPersonal.xhtml">
+            <ui:define name="content" >
+                <f:view>
+                    <h:form>
+                        <h1><h:outputText value="Turnos Programados"/></h1>
+                        <p:dataTable value="#{turnoControlador.turnosProgramados()}" var="item" reflow="true" rows="31" paginator="true" editable="true"
+                                     id="tbl" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                                     >
+                            <p:column filterBy="#{item.numeroDocumento.nombre}">
+                                <f:facet name="header">
+                                    <h:outputText value="Nombre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.numeroDocumento.nombre} #{item.numeroDocumento.apellido} "/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Entrada Programada"/>
+                                </f:facet>
+                                <h:outputText value="#{item.entradaProgramada}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Salida Programada"/>
+                                </f:facet>
+                                <h:outputText value="#{item.salidaProgramada}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Horas Programadas"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horasProgramadas}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Hora de Ingreso"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaIngresoReal}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Hora de Salida"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horaSalidaReal}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                                </h:outputText>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Horas Reales"/>
+                                </f:facet>
+                                <h:outputText value="#{item.horasReales}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Direfencia Horas"/>
+                                </f:facet>
+                                <h:outputText value="#{item.direfenciaHoras}"/>
+                            </p:column>
+                        </p:dataTable>  
+                        <h3>Exportar en:
+                            <h:commandLink>
+                                <p:graphicImage/><img src="../resources/img/excel.png" width="35" />
+                                <p:dataExporter type="xls" target="tbl" fileName="turnos" pageOnly="true"/>
+                            </h:commandLink>
+                            <h:commandLink>
+                                <p:graphicImage/><img src="../resources/img/pdf.png" width="35" />
+                                <p:dataExporter type="pdf" target="tbl" fileName="turnos" pageOnly="true" />
+                            </h:commandLink>
+                        </h3>
+                    </h:form>
+                </f:view>
+            </ui:define>            
+        </ui:composition>
+    </h:body>
+</html>
+

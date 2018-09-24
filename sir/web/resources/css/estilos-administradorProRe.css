@@ -1,0 +1,57 @@
+
+body{
+	background: #E6E6E6;
+	padding: 0px;
+	margin: 0px;
+	
+}
+
+li:hover{
+	background: rgba(21,176,13,.5);
+}
+
+.barra{
+	background: #2E2E2E;
+	color:#fff;
+
+	height: auto;
+	border-bottom:  1px solid white;
+	margin: 0;
+	padding: 0;
+
+}
+.barra .menu a{
+	text-decoration: none;
+	color: white;
+	display: block;
+	padding: 20px;
+	border-bottom:  1px solid white;
+	width: auto;
+}
+.barra .menu a:hover{
+
+	background: rgba(21,176,13,.5);
+}
+.act{
+	
+	background: rgba(21,176,13,.5);
+}
+i{
+	font-weight: normal;
+}
+
+.RP{
+	background: white;
+
+
+}
+
+iframe{
+	width: 100%; height: 100vh;
+}
+
+footer{
+	background: black;
+	height: 10vh;
+	width: 100%;
+}

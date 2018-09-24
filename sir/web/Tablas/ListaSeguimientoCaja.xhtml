@@ -1,0 +1,99 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="../Menus/MenuFacturacion.xhtml">
+            <ui:define name="content">
+                <p:panel id="pan" header="Seguimiento de ventas de producto">
+                    <f:view>
+                        <h:form id="form">
+                            <h1><h:outputText value="Lista"/></h1>
+                            <p:dataTable value="#{cajaControlador.listar()}" var="item" id="tab" style="font-size: 14px;" reflow="true" rows="10" paginator="true">
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Cajero"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.numeroDocumento.apellido} #{item.numeroDocumento.nombre}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="No. Caja"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.noCaja}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Fecha"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.fecha}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Base Inicial"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.baseInicial}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Base Final"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.baseFinal}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Total Diferencia"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.totalDiferencia}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Saldo Credito"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.saldoCredito}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Saldo Debito"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.saldoDebito}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Saldo Putos"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.saldoPuntos}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Saldo Efectivo"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.saldoEfectivo}"/>
+                                </p:column>
+                                <p:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Saldo Final Total"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.saldoFinalTotal}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </f:view>
+                    <h:form>
+                        <p:commandButton value="Actualizar" action="#{cajaControlador.listar()}" update=":form:tab"/>
+                    </h:form>
+                </p:panel>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

@@ -1,0 +1,15 @@
+@media screen and (max-width: 732px){
+	nav{
+		width: 100%
+	}
+	.logo{
+		width: 30%;
+		height: 100%;
+		background: yellow;
+	}
+	.navegador, .ingreso{
+		width: 70%;
+		height: 50%;
+	}
+
+}
